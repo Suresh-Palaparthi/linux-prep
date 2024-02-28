@@ -1,0 +1,25 @@
+#! /bin/bash
+
+INT=0
+if [[ "$INT" =~ ^-?[0-9]+$ ]]; then
+    if [ -z "$INT" ]; then
+        echo "INT is empty" >&2 # if there is an error it goes into the stderr stream instead of stdout stream '>' is the output redirection operator
+        exit 1
+    fi
+    if [ "$INT" -eq 0 ]; then
+        echo "You can't donate 0 rupees"
+    fi
+    if [ "$INT" -lt 0 ]; then
+        echo "Sorry, we don't give loans"
+    fi
+    if [ "$INT" -gt 0 ]; then
+        echo "Thanks for the donation"
+    fi
+    if [ $(($INT % 2)) -eq 0 ]; then
+        echo "The number is even"
+        else
+            echo "The number is odd"
+    fi
+else
+    echo "It is not a number"
+fi
